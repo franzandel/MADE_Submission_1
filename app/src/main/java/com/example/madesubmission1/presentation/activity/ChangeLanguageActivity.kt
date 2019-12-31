@@ -3,7 +3,6 @@ package com.example.madesubmission1.presentation.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madesubmission1.R
-import com.example.madesubmission1.data.entities.session.AppSession
 import kotlinx.android.synthetic.main.activity_change_language.*
 
 class ChangeLanguageActivity : AppCompatActivity() {
@@ -31,12 +30,7 @@ class ChangeLanguageActivity : AppCompatActivity() {
     }
 
     private fun setCheckedRadioBtn() {
-        val selectedLanguage = AppSession.sharedPreferences.getString(
-            AppSession.KEY_LANGUAGE,
-            resources.getString(R.string.language_english_value)
-        )
-
-        when (selectedLanguage.toString()) {
+        when (RootActivity.appSession.getLanguage()) {
             resources.getString(R.string.language_bahasa_value) -> {
                 rb_bahasa_indonesia.isChecked = true
             }
