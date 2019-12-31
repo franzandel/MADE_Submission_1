@@ -1,10 +1,20 @@
 <resources>
-    <string name="app_name">MADE Submission 1</string>
+    <string name="app_name">MADE Submission 2</string>
     <string name="movie_name">Movie Name</string>
     <string name="movie_description">Movie Description</string>
     <string name="movie_release_date">Release Date :</string>
     <string name="movie_release_date_value">28 Oct 19</string>
     <string name="movie_top_cast">Top Cast</string>
+    <string name="movie_image">Movie Image</string>
+
+    <string name="tab_title_1">Movies</string>
+    <string name="tab_title_2">TV Show</string>
+
+    <string name="toolbar_movie_name">New Movies List</string>
+    <string name="toolbar_tv_show_name">New Tv Show List</string>
+    <string name="toolbar_detail_name">%1$s Detail</string>
+
+    <string name="change_language_settings">Change Language Settings</string>
 
     <string-array name="arr_movie_name">
         <item>A Star Is Born</item>
@@ -58,16 +68,55 @@
         <item>Between personal obligations and training for his next big fight against an opponent with ties to his family\'s past, Adonis Creed is up against the challenge of his life.</item>
     </string-array>
 
-    <string-array name="arr_movie_photo">
-        <item>@drawable/poster_a_star</item>
-        <item>@drawable/poster_aquaman</item>
-        <item>@drawable/poster_avengerinfinity</item>
-        <item>@drawable/poster_mortalengine</item>
-        <item>@drawable/poster_bohemian</item>
-        <item>@drawable/poster_bumblebee</item>
-        <item>@drawable/poster_robinhood</item>
-        <item>@drawable/poster_spiderman</item>
-        <item>@drawable/poster_venom</item>
-        <item>@drawable/poster_creed</item>
+    <string-array name="arr_tv_show_name">
+        <item>Doom Patrol</item>
+        <item>Hanna</item>
+        <item>Fast &amp; Furious Spy Racers</item>
+        <item>The Mandalorian</item>
+        <item>His Dark Materials</item>
+        <item>Batwoman</item>
+        <item>Mrs. Fletcher</item>
+        <item>Carnival Row</item>
+        <item>Traces</item>
+        <item>Dororo</item>
+    </string-array>
+
+    <string-array name="arr_tv_show_top_cast">
+        <item>Timothy Dalton, Matt Bomer, Brendan Fraser, Diane Guerrero, April Bowlby</item>
+        <item>Esme Creed-Miles, Joel Kinnaman, Mireille Enos, Rhianne Barreto, Khalid Abdalla</item>
+        <item>Tyler Posey, Camille Ramsey, Charlet Chung, Luke Youngblood, Jorge Diaz</item>
+        <item>Pedro Pascal, Carl Weathers, Nick Nolte, Rio Hackford, Misty Rosas</item>
+        <item>Dafne Keen, Ruth Wilson, Clarke Peters, James Cosmo, Anne-Marie Duff</item>
+        <item>Ruby Rose, Rachel Skarsten, Meagan Tandy, Dougray Scott, Camrus Johnson</item>
+        <item>Kathryn Hahn, Jackson White, Owen Teague, Cameron Boyce, Domenick Lombardozzi</item>
+        <item>Orlando Bloom, Cara Delevingne, David Gyasi, Karla Crome, Indira Varma</item>
+        <item>Molly Windsor, Laura Fraser, Jennifer Spence, Martin Compston, Michael Nardone</item>
+        <item>Rio Suzuki, Hiroki Suzuki, Mutsumi Sasaki, Naoya Uchida, Akio Otsuka</item>
+    </string-array>
+
+    <string-array name="arr_tv_show_release_date">
+        <item>February 15, 2019</item>
+        <item>March 28, 2019</item>
+        <item>December 26, 2019</item>
+        <item>November 12, 2019</item>
+        <item>November 3, 2019</item>
+        <item>October 6, 2019</item>
+        <item>October 27, 2019</item>
+        <item>August 29, 2019</item>
+        <item>December 9, 2019</item>
+        <item>January 7, 2019</item>
+    </string-array>
+
+    <string-array name="arr_tv_show_description">
+        <item>The Doom Patrol\’s members each suffered horrible accidents that gave them superhuman abilities — but also left them scarred and disfigured. Traumatized and downtrodden, the team found purpose through The Chief, who brought them together to investigate the weirdest phenomena in existence — and to protect Earth from what they find.</item>
+        <item>This thriller and coming-of-age drama follows the journey of an extraordinary young girl as she evades the relentless pursuit of an off-book CIA agent and tries to unearth the truth behind who she is. Based on the 2011 Joe Wright film.</item>
+        <item>A government agency recruits teen driver Tony Toretto and his thrill-seeking friends to infiltrate a criminal street racing circuit as undercover spies.</item>
+        <item>Set after the fall of the Empire and before the emergence of the First Order, we follow the travails of a lone gunfighter in the outer reaches of the galaxy far from the authority of the New Republic.</item>
+        <item>Lyra is an orphan who lives in a parallel universe in which science, theology and magic are entwined. Lyra\'s search for a kidnapped friend uncovers a sinister plot involving stolen children, and turns into a quest to understand a mysterious phenomenon called Dust. She is later joined on her journey by Will, a boy who possesses a knife that can cut windows between worlds. As Lyra learns the truth about her parents and her prophesied destiny, the two young people are caught up in a war against celestial powers that ranges across many worlds.</item>
+        <item>Kate Kane, armed with a passion for social justice and a flair for speaking her mind, soars onto the streets of Gotham as Batwoman, an out lesbian and highly trained street fighter primed to snuff out the failing city\'s criminal resurgence. But don\'t call her a hero yet. In a city desperate for a savior, Kate must overcome her own demons before embracing the call to be Gotham\'s symbol of hope.</item>
+        <item>A dual coming-of-age comedy exploring the impact of internet porn and social media, Mrs. Fletcher follows empty nest divorcée Eve Fletcher — as she reinvents her life to find the happiness and sexual fulfillment that’s eluded her, and her college freshman son Brendan.</item>
+        <item>In a mystical and dark city filled with humans, fairies and other creatures, a police detective investigates a series of gruesome murders leveled against the fairy population. During his investigation, the detective becomes the prime suspect and must find the real killer to clear his name.</item>
+        <item>Set against the stunning Scottish landscape in and around Dundee, three compelling female characters — Emma Hedges, Prof. Sarah Gordon and Prof. Kathy Torrance — join forces to uncover the truth about an unsolved murder case that\'s very close to home.</item>
+        <item>A samurai lord has bartered away his newborn son\'s organs to forty-eight demons in exchange for dominance on the battlefield. Yet, the abandoned infant survives thanks to a medicine man who equips him with primitive prosthetics—lethal ones with which the wronged son will use to hunt down the multitude of demons to reclaim his body one piece at a time, before confronting his father. On his journeys the young hero encounters an orphan who claims to be the greatest thief in Japan.</item>
     </string-array>
 </resources>

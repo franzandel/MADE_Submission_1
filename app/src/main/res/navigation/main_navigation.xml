@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation"
+    app:startDestination="@id/listFragment">
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.madesubmission1.presentation.fragment.ListFragment"
+        android:label="ListFragment" >
+        <action
+            android:id="@+id/action_listFragment_to_listDetailActivity"
+            app:destination="@id/listDetailActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <activity
+        android:id="@+id/listDetailActivity"
+        android:name="com.example.madesubmission1.presentation.activity.ListDetailActivity"
+        android:label="ListDetailActivity" >
+        <argument
+            android:name="baseEntities"
+            app:argType="com.example.madesubmission1.data.entities.base.BaseEntities" />
+    </activity>
+</navigation>

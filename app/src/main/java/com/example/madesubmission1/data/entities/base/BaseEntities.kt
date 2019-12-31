@@ -1,15 +1,15 @@
-package com.example.madesubmission1
+package com.example.madesubmission1.data.entities.base
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
- * Created by Franz Andel on 2019-12-18.
+ * Created by Franz Andel on 2019-12-29.
  * Android Engineer
  */
 
 @Parcelize
-data class Movie(
+open class BaseEntities(
     var name: String,
     var description: String,
     var release_date: String,

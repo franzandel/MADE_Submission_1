@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MADE Submission 2</string>
+    <string name="movie_name">Nama Film</string>
+    <string name="movie_description">Deskripsi Film</string>
+    <string name="movie_release_date">Tanggal Keluar :</string>
+    <string name="movie_release_date_value">28 Oct 19</string>
+    <string name="movie_top_cast">Artis Pemeran</string>
+    <string name="movie_image">Gambar Film</string>
+
+    <string name="tab_title_1">Film</string>
+    <string name="tab_title_2">Acara TV</string>
+
+    <string name="toolbar_movie_name">Film Baru</string>
+    <string name="toolbar_tv_show_name">Acara TV Baru</string>
+    <string name="toolbar_detail_name">Detil %1$s</string>
+
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+
+    <string-array name="arr_movie_name">
+        <item>A Star Is Born</item>
+        <item>Aquaman</item>
+        <item>Avengers: Infinity War</item>
+        <item>Mortal Engines</item>
+        <item>Bohemian Rhapsody</item>
+        <item>Bumblebee</item>
+        <item>Robin Hood</item>
+        <item>Spider-Man: Into the Spider-Verse</item>
+        <item>Venom</item>
+        <item>Creed II</item>
+    </string-array>
+
+    <string-array name="arr_movie_top_cast">
+        <item>Bradley Cooper, Lady Gaga, Sam Elliott, Andrew Dice Clay, Rafi Gavron</item>
+        <item>Jason Momoa, Amber Heard, Willem Dafoe, Patrick Wilson, Nicole Kidman</item>
+        <item>Robert Downey Jr., Chris Hemsworth, Chris Evans, Mark Ruffalo, Scarlett Johansson</item>
+        <item>Hera Hilmar, Robert Sheehan, Hugo Weaving, Jihae, Ronan Raftery</item>
+        <item>Rami Malek, Gwilym Lee, Ben Hardy, Joseph Mazzello, Lucy Boynton</item>
+        <item>Hailee Steinfeld, Jorge Lendeborg Jr., John Cena, Jason Ian Drucker, Pamela Adlon</item>
+        <item>Taron Egerton, Jamie Foxx, Ben Mendelsohn, Eve Hewson, Jamie Dornan</item>
+        <item>Shameik Moore, Jake Johnson, Hailee Steinfeld, Mahershala Ali, Brian Tyree Henry</item>
+        <item>Tom Hardy, Michelle Williams, Riz Ahmed, Scott Haze, Reid Scott</item>
+        <item>Michael B. Jordan, Sylvester Stallone, Dolph Lundgren, Florian Munteanu, Tessa Thompson</item>
+    </string-array>
+
+    <string-array name="arr_movie_release_date">
+        <item>3 Oktober 2018</item>
+        <item>7 Desember 2018</item>
+        <item>25 April 2018</item>
+        <item>27 November 2018</item>
+        <item>24 Oktober 2018</item>
+        <item>15 Desember 2018</item>
+        <item>21 November 2018</item>
+        <item>6 Desember 2018</item>
+        <item>28 September 2018</item>
+        <item>21 November 2018</item>
+    </string-array>
+
+    <string-array name="arr_movie_description">
+        <item>Musisi kawakan Jackson Maine menemukan - dan jatuh cinta dengan - artis yang sedang berjuang Ally. Dia baru saja menyerah pada mimpinya untuk menjadi besar sebagai penyanyi - sampai Jack membujuknya menjadi sorotan. Tetapi bahkan ketika karir Ally lepas landas, sisi pribadi dari hubungan mereka hancur, seperti Jack berjuang pertempuran yang sedang berlangsung dengan setan internalnya sendiri.</item>
+        <item>Pernah menjadi rumah bagi peradaban paling maju di Bumi, Atlantis sekarang merupakan kerajaan bawah laut yang diperintah oleh Raja Orm yang haus kekuasaan. Dengan pasukan yang sangat besar, Orm berencana untuk menaklukkan orang-orang samudera yang tersisa dan kemudian ke permukaan dunia. Yang menghalanginya adalah Arthur Curry, saudara setengah manusia, setengah saudara Atlantis dan pewaris sejati takhta.</item>
+        <item>Ketika Avengers dan sekutu mereka terus melindungi dunia dari ancaman yang terlalu besar untuk ditangani oleh satu pahlawan, bahaya baru telah muncul dari bayang-bayang kosmik: Thanos. Seorang lalim penghinaan intergalaksi, tujuannya adalah untuk mengumpulkan semua enam Batu Infinity, artefak kekuatan yang tak terbayangkan, dan menggunakannya untuk menimbulkan keinginannya yang terpelintir pada semua kenyataan. Segala yang Avengers telah perjuangkan telah mengarah ke saat ini - nasib Bumi dan keberadaannya sendiri tidak pernah lebih pasti.</item>
+        <item>Beribu-ribu tahun di masa depan, kota-kota di bumi menjelajah dunia dengan roda besar, saling melahap dalam perjuangan untuk sumber daya yang semakin berkurang. Di salah satu kota traksi besar ini, London tua, Tom Natsworthy mengalami pertemuan tak terduga dengan seorang wanita muda misterius dari daerah terlantar yang akan mengubah jalan hidupnya selamanya.</item>
+        <item>Penyanyi Freddie Mercury, gitaris Brian May, drummer Roger Taylor dan gitaris bass John Deacon membuat dunia musik terguncang ketika mereka membentuk band rock Queen Rock pada tahun 1970. Lagu-lagu hit menjadi klasik instan. Ketika gaya hidup Mercury yang semakin liar mulai lepas kendali, Queen segera menghadapi tantangan terbesarnya - menemukan cara untuk menjaga band tetap bersama di tengah kesuksesan dan kelebihan.</item>
+        <item>Dalam pelarian pada tahun 1987, Bumblebee menemukan tempat perlindungan di tempat barang rongsokan di kota pantai kecil California. Charlie, di puncak usia 18 dan berusaha menemukan tempatnya di dunia, menemukan Bumblebee, bekas luka pertempuran dan patah. Ketika Charlie menghidupkannya, dia dengan cepat mengetahui bahwa ini bukan bug VW kuning biasa.</item>
+        <item>Seorang pejuang perang yang keras dan komandan Moornya melakukan pemberontakan yang berani melawan mahkota Inggris yang korup.</item>
+        <item>Miles Morales menyulap hidupnya antara menjadi siswa sekolah menengah dan menjadi manusia laba-laba. Ketika Wilson \ "Kingpin \" Fisk menggunakan collider super, yang lain dari seberang Spider-Verse diangkut ke dimensi ini.</item>
+        <item>Jurnalis investigasi Eddie Brock mencoba untuk kembali setelah skandal, tetapi secara tidak sengaja menjadi tuan rumah Venom, seorang simbiot alien yang sangat kuat dan sakti. Segera, ia harus mengandalkan kekuatan barunya untuk melindungi dunia dari organisasi bayangan yang mencari simbiosis mereka sendiri.</item>
+        <item>Antara kewajiban pribadi dan pelatihan untuk pertarungan besar berikutnya melawan lawan yang memiliki ikatan dengan masa lalu keluarganya, Adonis Creed menghadapi tantangan hidupnya.</item>
+    </string-array>
+
+    <string-array name="arr_tv_show_name">
+        <item>Doom Patrol</item>
+        <item>Hanna</item>
+        <item>Fast &amp; Furious Spy Racers</item>
+        <item>The Mandalorian</item>
+        <item>His Dark Materials</item>
+        <item>Batwoman</item>
+        <item>Mrs. Fletcher</item>
+        <item>Carnival Row</item>
+        <item>Traces</item>
+        <item>Dororo</item>
+    </string-array>
+
+    <string-array name="arr_tv_show_top_cast">
+        <item>Timothy Dalton, Matt Bomer, Brendan Fraser, Diane Guerrero, April Bowlby</item>
+        <item>Esme Creed-Miles, Joel Kinnaman, Mireille Enos, Rhianne Barreto, Khalid Abdalla</item>
+        <item>Tyler Posey, Camille Ramsey, Charlet Chung, Luke Youngblood, Jorge Diaz</item>
+        <item>Pedro Pascal, Carl Weathers, Nick Nolte, Rio Hackford, Misty Rosas</item>
+        <item>Dafne Keen, Ruth Wilson, Clarke Peters, James Cosmo, Anne-Marie Duff</item>
+        <item>Ruby Rose, Rachel Skarsten, Meagan Tandy, Dougray Scott, Camrus Johnson</item>
+        <item>Kathryn Hahn, Jackson White, Owen Teague, Cameron Boyce, Domenick Lombardozzi</item>
+        <item>Orlando Bloom, Cara Delevingne, David Gyasi, Karla Crome, Indira Varma</item>
+        <item>Molly Windsor, Laura Fraser, Jennifer Spence, Martin Compston, Michael Nardone</item>
+        <item>Rio Suzuki, Hiroki Suzuki, Mutsumi Sasaki, Naoya Uchida, Akio Otsuka</item>
+    </string-array>
+
+    <string-array name="arr_tv_show_release_date">
+        <item>15 Februari 2019</item>
+        <item>28 Maret 2019</item>
+        <item>26 Desember 2019</item>
+        <item>12 November 2019</item>
+        <item>3 November 2019</item>
+        <item>6 Oktober 2019</item>
+        <item>27 Oktober 2019</item>
+        <item>29 Agustus 2019</item>
+        <item>9 Desember 2019</item>
+        <item>7 Januari 2019</item>
+    </string-array>
+
+    <string-array name="arr_tv_show_description">
+        <item>Anggota Patroli Doom masing-masing mengalami kecelakaan mengerikan yang memberi mereka kemampuan manusia super - tetapi juga membuat mereka terluka dan cacat. Trauma dan tertindas, tim menemukan tujuan melalui Ketua, yang menyatukan mereka untuk menyelidiki fenomena aneh yang ada - dan untuk melindungi Bumi dari apa yang mereka temukan.</item>
+        <item>Drama yang menegangkan dan menjadi dewasa ini mengikuti perjalanan seorang gadis muda yang luar biasa ketika ia menghindari pengejaran tanpa henti dari seorang agen CIA yang tidak ada buku dan mencoba untuk menggali kebenaran di balik siapa dirinya. Berdasarkan film Joe Wright 2011.</item>
+        <item>Sebuah agen pemerintah merekrut pengemudi remaja Tony Toretto dan teman-temannya yang mencari sensasi untuk menyusup ke sirkuit balap jalanan kriminal sebagai mata-mata yang menyamar.</item>
+        <item>Ditetapkan setelah jatuhnya Kekaisaran dan sebelum munculnya Orde Pertama, kita mengikuti upaya seorang penembak jitu di bagian luar galaksi yang jauh dari otoritas Republik Baru.</item>
+        <item>Lyra adalah seorang yatim piatu yang hidup di alam semesta paralel di mana sains, teologi, dan sihir terjalin. Pencarian Lyra untuk seorang teman yang diculik mengungkap plot jahat yang melibatkan anak-anak yang dicuri, dan berubah menjadi pencarian untuk memahami fenomena misterius yang disebut Dust. Dia kemudian bergabung dalam perjalanannya oleh Will, seorang bocah lelaki yang memiliki pisau yang dapat memotong jendela antar dunia. Ketika Lyra mengetahui kebenaran tentang orang tuanya dan takdirnya yang dinubuatkan, kedua orang muda itu terperangkap dalam perang melawan kekuatan selestial yang tersebar di banyak dunia.</item>
+        <item>Kate Kane, dipersenjatai dengan hasrat untuk keadilan sosial dan bakat untuk berbicara pikirannya, melonjak ke jalan-jalan Gotham sebagai Batwoman, seorang lesbian pejuang jalanan dan sangat terlatih prima untuk memadamkan kebangkitan kriminal kota yang gagal itu. Tapi jangan panggil dia pahlawan. Di kota yang sangat membutuhkan penyelamat, Kate harus mengatasi iblisnya sendiri sebelum menerima panggilan untuk menjadi simbol harapan Gotham.</item>
+        <item>Sebuah komedi ganda yang datang dari usia yang mengeksplorasi dampak dari internet porno dan media sosial, Ny. Fletcher mengikuti perceraian sarang kosong Eve Fletcher - ketika ia menemukan kembali kehidupannya untuk menemukan kebahagiaan dan kepuasan seksual yang telah menghindarinya, dan putra pertamanya di kampus Brendan.</item>
+        <item>Di kota mistis dan gelap yang dipenuhi manusia, peri, dan makhluk lain, seorang detektif polisi menyelidiki serangkaian pembunuhan mengerikan yang ditujukan pada populasi peri. Selama penyelidikan, detektif menjadi tersangka utama dan harus menemukan pembunuh yang sebenarnya untuk membersihkan namanya.</item>
+        <item>Berlatar belakang pemandangan Skotlandia yang menakjubkan di dalam dan sekitar Dundee, tiga karakter wanita yang menarik - Emma Hedges, Prof. Sarah Gordon dan Prof. Kathy Torrance - bergabung bersama untuk mengungkap kebenaran tentang kasus pembunuhan yang tidak terpecahkan yang sangat dekat dengan rumah.</item>
+        <item>Seorang raja samurai telah menukar organ putranya yang baru lahir menjadi empat puluh delapan setan dengan imbalan dominasi di medan perang. Namun, bayi yang ditinggalkan itu selamat berkat seorang dukun yang memperlengkapi dia dengan prosthetics primitif — yang mematikan yang dengannya anak yang bersalah akan digunakan untuk memburu banyak setan untuk merebut kembali tubuhnya sepotong demi sepotong, sebelum menghadapi ayahnya. Dalam perjalanannya, pahlawan muda itu bertemu seorang yatim piatu yang mengaku sebagai pencuri terhebat di Jepang.</item>
+    </string-array>
+</resources>
