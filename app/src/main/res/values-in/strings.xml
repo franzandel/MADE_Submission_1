@@ -14,8 +14,14 @@
     <string name="toolbar_movie_name">Film Baru</string>
     <string name="toolbar_tv_show_name">Acara TV Baru</string>
     <string name="toolbar_detail_name">Detil %1$s</string>
+    <string name="toolbar_change_language">Ubah Bahasa</string>
 
     <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="change_language_bahasa">Bahasa Indonesia</string>
+    <string name="change_language_english">English</string>
+
+    <string name="language_bahasa_value">id</string>
+    <string name="language_english_value">en</string>
 
     <string-array name="arr_movie_name">
         <item>A Star Is Born</item>

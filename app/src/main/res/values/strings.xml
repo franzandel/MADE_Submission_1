@@ -11,10 +11,16 @@
     <string name="tab_title_2">TV Show</string>
 
     <string name="toolbar_movie_name">New Movies List</string>
-    <string name="toolbar_tv_show_name">New Tv Show List</string>
+    <string name="toolbar_tv_show_name">New TV Show List</string>
     <string name="toolbar_detail_name">%1$s Detail</string>
+    <string name="toolbar_change_language">Change Language</string>
 
     <string name="change_language_settings">Change Language Settings</string>
+    <string name="change_language_bahasa">Bahasa Indonesia</string>
+    <string name="change_language_english">English</string>
+
+    <string name="language_bahasa_value">id</string>
+    <string name="language_english_value">en</string>
 
     <string-array name="arr_movie_name">
         <item>A Star Is Born</item>
