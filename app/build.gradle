@@ -27,6 +27,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -52,4 +57,14 @@ dependencies {
     // Navigation Component Library
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
+
+    // Networking Library
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+
+    // JSON Library
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Loading Indicator Library
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 }

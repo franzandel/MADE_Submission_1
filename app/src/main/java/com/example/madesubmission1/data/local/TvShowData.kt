@@ -1,7 +1,7 @@
 package com.example.madesubmission1.data.local
 
 import com.example.madesubmission1.R
-import com.example.madesubmission1.data.entities.TvShow
+import com.example.madesubmission1.data.entities.local.TvShowLocal
 
 /**
  * Created by Franz Andel on 2019-12-28.
@@ -26,17 +26,18 @@ class TvShowData(private val arrTvShowName: Array<String>,
         R.drawable.dororo
     )
 
-    val listTvShow: ArrayList<TvShow>
+    val listTvShow: ArrayList<TvShowLocal>
         get() {
-            val list = arrayListOf<TvShow>()
+            val list = arrayListOf<TvShowLocal>()
             for (position in arrTvShowName.indices) {
-                val tvShow = TvShow(
-                    arrTvShowName[position],
-                    arrTvShowDescription[position],
-                    arrTvShowReleaseDate[position],
-                    arrTvShowTopCast[position],
-                    arrTvShowImages[position]
-                )
+                val tvShow =
+                    TvShowLocal(
+                        arrTvShowName[position],
+                        arrTvShowDescription[position],
+                        arrTvShowReleaseDate[position],
+                        arrTvShowTopCast[position],
+                        arrTvShowImages[position]
+                    )
 
                 list.add(tvShow)
             }

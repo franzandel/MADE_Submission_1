@@ -1,7 +1,7 @@
 package com.example.madesubmission1.data.local
 
-import com.example.madesubmission1.data.entities.Movie
 import com.example.madesubmission1.R
+import com.example.madesubmission1.data.entities.local.MovieLocal
 
 /**
  * Created by Franz Andel on 2019-12-28.
@@ -26,17 +26,18 @@ class MoviesData(private val arrMovieName: Array<String>,
         R.drawable.poster_creed
     )
 
-    val listMovie: ArrayList<Movie>
+    val listMovie: ArrayList<MovieLocal>
         get() {
-            val list = arrayListOf<Movie>()
+            val list = arrayListOf<MovieLocal>()
             for (position in arrMovieName.indices) {
-                val movie = Movie(
-                    arrMovieName[position],
-                    arrMovieDescription[position],
-                    arrMovieReleaseDate[position],
-                    arrMovieTopCast[position],
-                    arrMovieImages[position]
-                )
+                val movie =
+                    MovieLocal(
+                        arrMovieName[position],
+                        arrMovieDescription[position],
+                        arrMovieReleaseDate[position],
+                        arrMovieTopCast[position],
+                        arrMovieImages[position]
+                    )
 
                 list.add(movie)
             }

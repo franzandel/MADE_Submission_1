@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MADE Submission 2</string>
+    <string name="app_name">MADE Submission 3</string>
     <string name="movie_name">Movie Name</string>
     <string name="movie_description">Movie Description</string>
     <string name="movie_release_date">Release Date :</string>
@@ -21,6 +21,8 @@
 
     <string name="language_bahasa_value">id</string>
     <string name="language_english_value">en</string>
+
+    <string name="load_api_failed">Error getting Data from API\nLoading Data from Local</string>
 
     <string-array name="arr_movie_name">
         <item>A Star Is Born</item>
