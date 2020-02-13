@@ -25,7 +25,7 @@ class RootActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_root)
 
-        setToolbarName(resources.getString(R.string.toolbar_movie_name))
+        setCurrentToolbarTitle()
         setupTabLayout()
         addTabLayoutListener()
         removeToolbarElevation()
@@ -43,16 +43,38 @@ class RootActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_change_settings) {
-            val intent = Intent(this, ChangeLanguageActivity::class.java)
-            startActivity(intent)
+        when (item.itemId) {
+            R.id.action_favorite_page -> {
+                if (appSession.getIsShowingFavorite()) {
+                    appSession.setIsShowingFavorite(false)
+                    item.title = getString(R.string.show_all_settings)
+                } else {
+                    appSession.setIsShowingFavorite(true)
+                    item.title = getString(R.string.show_favorite_settings)
+                }
+
+                appSession.setHasUserClickedFavorite(true)
+                setupTabLayout()
+            }
+            R.id.action_change_settings -> {
+                val intent = Intent(this, ChangeLanguageActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setToolbarName(title: String) {
+    private fun setToolbarTitle(title: String) {
         supportActionBar?.title = title
+    }
+
+    private fun setCurrentToolbarTitle() {
+        if (appSession.getIsShowingFavorite()) {
+            setToolbarTitle(getString(R.string.toolbar_favorite_movie_name))
+        } else {
+            setToolbarTitle(getString(R.string.toolbar_movie_name))
+        }
     }
 
     private fun setupTabLayout() {
@@ -77,9 +99,13 @@ class RootActivity : AppCompatActivity() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.position == 0) {
-                    setToolbarName(resources.getString(R.string.toolbar_movie_name))
+                    setCurrentToolbarTitle()
                 } else if (tab?.position == 1) {
-                    setToolbarName(resources.getString(R.string.toolbar_tv_show_name))
+                    if (appSession.getIsShowingFavorite()) {
+                        setToolbarTitle(getString(R.string.toolbar_favorite_tv_show_name))
+                    } else {
+                        setToolbarTitle(getString(R.string.toolbar_tv_show_name))
+                    }
                 }
             }
         })

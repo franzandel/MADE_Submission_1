@@ -17,7 +17,7 @@ import retrofit2.http.Query
 class TvShowNetwork {
     interface TvShowNetworkService {
         @GET("discover/tv")
-        fun getAllTvShow(@Query("api_key") apiKey: String): Call<BaseAPIResponse<TvShowAPI>>
+        fun getAllTvShowFromAPI(@Query("api_key") apiKey: String): Call<BaseAPIResponse<TvShowAPI>>
     }
 
     fun getTvShowNetworkService(): TvShowNetworkService {

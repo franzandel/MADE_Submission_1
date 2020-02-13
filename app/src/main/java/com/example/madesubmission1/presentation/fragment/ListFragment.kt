@@ -12,15 +12,16 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.madesubmission1.R
+import com.example.madesubmission1.data.entities.api.APIStateHandler
+import com.example.madesubmission1.data.entities.api.MovieAPI
+import com.example.madesubmission1.data.entities.api.TvShowAPI
 import com.example.madesubmission1.data.entities.api.base.BaseAPI
-import com.example.madesubmission1.data.entities.local.base.BaseLocalModel
-import com.example.madesubmission1.data.local.MoviesData
-import com.example.madesubmission1.data.local.TvShowData
+import com.example.madesubmission1.presentation.activity.RootActivity
 import com.example.madesubmission1.presentation.adapter.recyclerview.ListAPIAdapter
-import com.example.madesubmission1.presentation.adapter.recyclerview.ListLocalAdapter
 import com.example.madesubmission1.presentation.callback.OnAPIItemCallback
-import com.example.madesubmission1.presentation.callback.OnLocalItemCallback
 import com.example.madesubmission1.presentation.viewmodel.ListFragmentViewModel
+import com.example.madesubmission1.utils.hide
+import com.example.madesubmission1.utils.showToast
 import kotlinx.android.synthetic.main.fragment_list.*
 
 /**
@@ -44,10 +45,9 @@ class ListFragment : Fragment() {
     }
 
     private lateinit var listFragmentViewModel: ListFragmentViewModel
-    private var arrBaseLocalModel = arrayListOf<BaseLocalModel>()
     private var arrBaseAPI = arrayListOf<BaseAPI>()
-    private val listLocalAdapter = ListLocalAdapter(arrBaseLocalModel)
-    private val listAPIAdapter = ListAPIAdapter(arrBaseAPI)
+    private var arrFavoriteBaseAPI = arrayListOf<BaseAPI>()
+    private var listAPIAdapter: ListAPIAdapter = ListAPIAdapter(arrBaseAPI)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,11 +63,14 @@ class ListFragment : Fragment() {
         setupRVLayoutManager()
         setupRVDivider()
         setArrData()
-        setupUIClickListener()
+        setListAPIAdapterClickListener()
     }
 
     private fun initializeVM() {
-        listFragmentViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+        listFragmentViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory(this.activity!!.application)
+        ).get(
             ListFragmentViewModel::class.java
         )
     }
@@ -87,92 +90,170 @@ class ListFragment : Fragment() {
 
     private fun setArrData() {
         if (arguments?.getInt(ARG_PAGE_INDEX) == 0) {
-            listFragmentViewModel.getListMovie().observe(this, Observer { apiStateHandler ->
-                if (apiStateHandler == null) return@Observer
-                spinkit_progress.visibility = View.GONE
-
-                if (apiStateHandler.error == null) {
-                    apiStateHandler.baseAPIResponse?.let {
-                        setAPIAdapter(it.results)
+            if (RootActivity.appSession.getHasUserClickedFavorite()) {
+                if (RootActivity.appSession.getIsShowingFavorite()) {
+                    if (arrFavoriteBaseAPI.isNullOrEmpty()) {
+                        getFavoriteMovieAPIFromDB()
+                    } else {
+                        hideProgressBar()
+                        setAPIAdapter(arrFavoriteBaseAPI)
                     }
                 } else {
-                    Toast.makeText(context, getString(R.string.load_api_failed), Toast.LENGTH_LONG)
-                        .show()
-                    setMoviesDataAdapter()
+                    if (arrBaseAPI.isNullOrEmpty()) {
+                        getMovieAPIFromDB()
+                    } else {
+                        hideProgressBar()
+                        setAPIAdapter(arrBaseAPI)
+                    }
                 }
-            })
+            } else {
+                getMovieAPI()
+            }
         } else if (arguments?.getInt(ARG_PAGE_INDEX) == 1) {
-            listFragmentViewModel.getListTvShow().observe(this, Observer { apiStateHandler ->
-                if (apiStateHandler == null) return@Observer
-                spinkit_progress.visibility = View.GONE
-
-                if (apiStateHandler.error == null) {
-                    apiStateHandler.baseAPIResponse?.let {
-                        setAPIAdapter(it.results)
+            if (RootActivity.appSession.getHasUserClickedFavorite()) {
+                if (RootActivity.appSession.getIsShowingFavorite()) {
+                    if (arrFavoriteBaseAPI.isNullOrEmpty()) {
+                        getFavoriteTvShowAPIFromDB()
+                    } else {
+                        hideProgressBar()
+                        setAPIAdapter(arrFavoriteBaseAPI)
                     }
                 } else {
-                    Toast.makeText(context, getString(R.string.load_api_failed), Toast.LENGTH_LONG)
-                        .show()
-                    setTvShowDataAdapter()
+                    if (arrBaseAPI.isNullOrEmpty()) {
+                        getTvShowAPIFromDB()
+                    } else {
+                        hideProgressBar()
+                        setAPIAdapter(arrBaseAPI)
+                    }
                 }
-            })
+            } else {
+                getTvShowAPI()
+            }
         }
     }
 
-    private fun setAPIAdapter(baseAPI: List<BaseAPI>) {
-        arrBaseAPI.addAll(baseAPI)
+    private fun handlingMovieAPIAfterSuccessFetch(apiStateHandler: APIStateHandler<MovieAPI>) {
+        hideProgressBar()
+
+        if (apiStateHandler.error == null) {
+            apiStateHandler.baseAPIResponse?.let {
+                if (listAPIAdapter.itemCount == 0) {
+                    setAPIAdapter(it.results)
+                }
+
+                insertMovieAPIIntoDBIfNotExist(it.results)
+            }
+        } else {
+            context?.showToast(getString(R.string.load_api_failed), Toast.LENGTH_LONG)
+        }
+    }
+
+    private fun handlingTvShowAPIAfterSuccessFetch(apiStateHandler: APIStateHandler<TvShowAPI>) {
+        hideProgressBar()
+
+        if (apiStateHandler.error == null) {
+            apiStateHandler.baseAPIResponse?.let {
+                if (listAPIAdapter.itemCount == 0) {
+                    setAPIAdapter(it.results)
+                }
+
+                insertTvShowAPIIntoDBIfNotExist(it.results)
+            }
+        } else {
+            context?.showToast(getString(R.string.load_api_failed), Toast.LENGTH_LONG)
+        }
+    }
+
+    private fun insertMovieAPIIntoDBIfNotExist(listMovieAPI: List<MovieAPI>) {
+        listFragmentViewModel.getAllMovieAPIFromDB { listMovieAPIFromDB ->
+            if (listMovieAPIFromDB.isNullOrEmpty()) {
+                listFragmentViewModel.insertAllMovieAPIIntoDB(listMovieAPI)
+            }
+        }
+    }
+
+    private fun insertTvShowAPIIntoDBIfNotExist(listTvShowAPI: List<TvShowAPI>) {
+        listFragmentViewModel.getAllTvShowAPIFromDB { listTvShowAPIFromDB ->
+            if (listTvShowAPIFromDB.isNullOrEmpty()) {
+                listFragmentViewModel.insertAllTvShowAPIIntoDB(listTvShowAPI)
+            }
+        }
+    }
+
+    private fun getMovieAPI() {
+        listFragmentViewModel.getListMovieFromAPI()
+            .observe(this, Observer { apiStateHandler ->
+                handlingMovieAPIAfterSuccessFetch(apiStateHandler)
+            })
+    }
+
+    private fun getTvShowAPI() {
+        listFragmentViewModel.getListTvShowFromAPI()
+            .observe(this, Observer { apiStateHandler ->
+                handlingTvShowAPIAfterSuccessFetch(apiStateHandler)
+            })
+    }
+
+    private fun getFavoriteMovieAPIFromDB() {
+        listFragmentViewModel.getAllFavoriteMovieAPIFromDB { listFavoriteMovieAPI ->
+            hideProgressBar()
+            setAPIAdapter(listFavoriteMovieAPI)
+        }
+    }
+
+    private fun getFavoriteTvShowAPIFromDB() {
+        listFragmentViewModel.getAllFavoriteTvShowAPIFromDB { listFavoriteTvShowAPI ->
+            hideProgressBar()
+            setAPIAdapter(listFavoriteTvShowAPI)
+        }
+    }
+
+    private fun getMovieAPIFromDB() {
+        listFragmentViewModel.getAllMovieAPIFromDB { listMovieAPI ->
+            hideProgressBar()
+            setAPIAdapter(listMovieAPI)
+        }
+    }
+
+    private fun getTvShowAPIFromDB() {
+        listFragmentViewModel.getAllTvShowAPIFromDB { listTvShowAPI ->
+            hideProgressBar()
+            setAPIAdapter(listTvShowAPI)
+        }
+    }
+
+    private fun hideProgressBar() {
+        spinkit_progress.hide()
+    }
+
+    private fun setAPIAdapter(listBaseAPI: List<BaseAPI>) {
+        if (RootActivity.appSession.getIsShowingFavorite()) {
+            if (arrFavoriteBaseAPI.isEmpty())
+                arrFavoriteBaseAPI.addAll(listBaseAPI)
+
+            setAPIAdapter(arrFavoriteBaseAPI)
+            setListAPIAdapterClickListener()
+        } else {
+            if (arrBaseAPI.isEmpty())
+                arrBaseAPI.addAll(listBaseAPI)
+
+            setAPIAdapter(arrBaseAPI)
+            setListAPIAdapterClickListener()
+        }
+    }
+
+    private fun setAPIAdapter(arrBaseAPI: ArrayList<BaseAPI>) {
+        listAPIAdapter = ListAPIAdapter(arrBaseAPI)
         rv_list.adapter = listAPIAdapter
     }
 
-    private fun setMoviesDataAdapter() {
-        val moviesData = MoviesData(
-            resources.getStringArray(R.array.arr_movie_name),
-            resources.getStringArray(R.array.arr_movie_top_cast),
-            resources.getStringArray(R.array.arr_movie_release_date),
-            resources.getStringArray(R.array.arr_movie_description)
-        )
-
-        arrBaseLocalModel.addAll(moviesData.listMovie)
-        rv_list.adapter = listLocalAdapter
-    }
-
-    private fun setTvShowDataAdapter() {
-        val tvShowData = TvShowData(
-            resources.getStringArray(R.array.arr_tv_show_name),
-            resources.getStringArray(R.array.arr_tv_show_top_cast),
-            resources.getStringArray(R.array.arr_tv_show_release_date),
-            resources.getStringArray(R.array.arr_tv_show_description)
-        )
-
-        arrBaseLocalModel.addAll(tvShowData.listTvShow)
-        rv_list.adapter = listLocalAdapter
-    }
-
-    private fun setupUIClickListener() {
-        listLocalAdapter.setOnLocalItemClickCallback(object :
-            OnLocalItemCallback {
-            override fun onItemClicked(baseLocalModel: BaseLocalModel) {
-                navigateToDetail(baseLocalModel)
-            }
-        })
-
+    private fun setListAPIAdapterClickListener() {
         listAPIAdapter.setOnAPIItemClickCallback(object :
             OnAPIItemCallback {
             override fun onItemClicked(baseAPI: BaseAPI) {
                 navigateToDetail(baseAPI)
             }
         })
-    }
-
-    private fun navigateToDetail(baseLocalModel: BaseLocalModel) {
-        val toListDetailActivity =
-            ListFragmentDirections.actionListFragmentToListDetailActivity().apply {
-                setBaseLocalModel(baseLocalModel)
-            }
-
-        NavHostFragment.findNavController(this).apply {
-            navigate(toListDetailActivity)
-        }
     }
 
     private fun navigateToDetail(baseAPI: BaseAPI) {

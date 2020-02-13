@@ -17,7 +17,7 @@ import retrofit2.http.Query
 class MovieNetwork {
     interface MoviesNetworkService {
         @GET("discover/movie")
-        fun getAllMovies(@Query("api_key") apiKey: String): Call<BaseAPIResponse<MovieAPI>>
+        fun getAllMoviesFromAPI(@Query("api_key") apiKey: String): Call<BaseAPIResponse<MovieAPI>>
     }
 
     fun getMoviesNetworkService(): MoviesNetworkService {

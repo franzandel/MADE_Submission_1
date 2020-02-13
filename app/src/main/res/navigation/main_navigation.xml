@@ -21,10 +21,5 @@
             app:argType="com.example.madesubmission1.data.entities.api.base.BaseAPI"
             app:nullable="true"
             android:defaultValue="@null" />
-        <argument
-            android:name="baseLocalModel"
-            app:argType="com.example.madesubmission1.data.entities.local.base.BaseLocalModel"
-            app:nullable="true"
-            android:defaultValue="@null" />
     </activity>
 </navigation>

@@ -1,36 +1,53 @@
 package com.example.madesubmission1.data.entities.api
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.madesubmission1.data.entities.api.base.BaseAPI
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity
 data class TvShowAPI(
     @SerializedName("first_air_date")
-    val firstAirDate: String?,
-    val name: String?,
+    var firstAirDate: String?,
+    var name: String?,
     @SerializedName("origin_country")
-    val originCountry: List<String>,
+    var originCountry: List<String>,
     @SerializedName("original_name")
-    val originalName: String?,
+    var originalName: String?,
+    @ColumnInfo(name = "_backdrop_path")
     @SerializedName("backdrop_path")
-    override val backdropPath: String?,
+    override var backdropPath: String?,
+    @ColumnInfo(name = "_genre_ids")
     @SerializedName("genre_ids")
-    override val genreIds: List<Int>,
+    override var genreIds: List<Int>,
+    @PrimaryKey
+    @ColumnInfo(name = "__id")
     @SerializedName("id")
-    override val _id: Int?,
+    override var _id: Int?,
+    @ColumnInfo(name = "_original_language")
     @SerializedName("original_language")
-    override val originalLanguage: String?,
+    override var originalLanguage: String?,
+    @ColumnInfo(name = "__overview")
     @SerializedName("overview")
-    override val _overview: String?,
+    override var _overview: String?,
+    @ColumnInfo(name = "__popularity")
     @SerializedName("popularity")
-    override val _popularity: Double?,
+    override var _popularity: Double?,
     @SerializedName("poster_path")
-    override val posterPath: String?,
+    @ColumnInfo(name = "_poster_path")
+    override var posterPath: String?,
     @SerializedName("vote_average")
-    override val voteAverage: Double?,
+    @ColumnInfo(name = "_vote_average")
+    override var voteAverage: Double?,
     @SerializedName("vote_count")
-    override val voteCount: Int?
+    @ColumnInfo(name = "_vote_count")
+    override var voteCount: Int?,
+    @SerializedName("is_favorite")
+    @ColumnInfo(name = "_is_favorite")
+    override var isFavorite: Boolean
 ) : BaseAPI(
     backdropPath,
     genreIds,
@@ -40,5 +57,6 @@ data class TvShowAPI(
     _popularity,
     posterPath,
     voteAverage,
-    voteCount
+    voteCount,
+    isFavorite
 )
