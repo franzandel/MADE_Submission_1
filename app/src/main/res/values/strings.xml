@@ -27,5 +27,6 @@
     <string name="language_bahasa_value">id</string>
     <string name="language_english_value">en</string>
 
-    <string name="load_api_failed">Error getting Data from API\nLoading Data from Local</string>
+    <string name="load_api_failed">Error getting Data from API</string>
+    <string name="iv_item_list_description">Image</string>
 </resources>

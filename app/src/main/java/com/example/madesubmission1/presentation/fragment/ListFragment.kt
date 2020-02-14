@@ -182,14 +182,14 @@ class ListFragment : Fragment() {
 
     private fun getMovieAPI() {
         listFragmentViewModel.getListMovieFromAPI()
-            .observe(this, Observer { apiStateHandler ->
+            .observe(viewLifecycleOwner, Observer { apiStateHandler ->
                 handlingMovieAPIAfterSuccessFetch(apiStateHandler)
             })
     }
 
     private fun getTvShowAPI() {
         listFragmentViewModel.getListTvShowFromAPI()
-            .observe(this, Observer { apiStateHandler ->
+            .observe(viewLifecycleOwner, Observer { apiStateHandler ->
                 handlingTvShowAPIAfterSuccessFetch(apiStateHandler)
             })
     }

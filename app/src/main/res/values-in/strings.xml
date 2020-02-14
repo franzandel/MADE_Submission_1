@@ -28,5 +28,6 @@
     <string name="language_bahasa_value">id</string>
     <string name="language_english_value">en</string>
 
-    <string name="load_api_failed">Gagal mengambil Data dari API\nAkan menampilkan data dari Local</string>
+    <string name="load_api_failed">Gagal mengambil Data dari API</string>
+    <string name="iv_item_list_description">Gambar</string>
 </resources>

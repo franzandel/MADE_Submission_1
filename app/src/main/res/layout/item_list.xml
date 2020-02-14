@@ -9,7 +9,8 @@
         android:id="@+id/ivListPhoto"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:contentDescription="@string/iv_item_list_description" />
 
     <TextView
         android:id="@+id/tvListName"

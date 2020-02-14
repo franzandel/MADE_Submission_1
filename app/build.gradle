@@ -14,7 +14,7 @@ androidExtensions {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.madesubmission1"
         minSdkVersion 17
@@ -54,7 +54,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     // Image Library
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     // Navigation Component Library
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
