@@ -18,6 +18,19 @@ class MovieNetwork {
     interface MoviesNetworkService {
         @GET("discover/movie")
         fun getAllMoviesFromAPI(@Query("api_key") apiKey: String): Call<BaseAPIResponse<MovieAPI>>
+
+        @GET("search/movie")
+        fun searchMovieFromAPI(
+            @Query("api_key") apiKey: String,
+            @Query("query") query: String
+        ): Call<BaseAPIResponse<MovieAPI>>
+
+        @GET("discover/movie")
+        fun getReleasedTodayMoviesFromAPI(
+            @Query("api_key") apiKey: String,
+            @Query("primary_release_date.gte") dateToday: String,
+            @Query("primary_release_date.lte") dateToday2: String
+        ): Call<BaseAPIResponse<MovieAPI>>
     }
 
     fun getMoviesNetworkService(): MoviesNetworkService {

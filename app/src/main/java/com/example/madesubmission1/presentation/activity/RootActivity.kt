@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.example.madesubmission1.R
 import com.example.madesubmission1.data.entities.session.AppSession
+import com.example.madesubmission1.external.alarmmanager.DailyAlarmManager
+import com.example.madesubmission1.external.alarmmanager.ReleaseAlarmManager
 import com.example.madesubmission1.presentation.adapter.ViewPagerAdapter
+import com.example.madesubmission1.presentation.fragment.ListFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_root.*
 import java.util.*
@@ -16,6 +20,17 @@ class RootActivity : AppCompatActivity() {
 
     companion object {
         lateinit var appSession: AppSession
+    }
+
+    private val dailyAlarmManager by lazy {
+        DailyAlarmManager(
+            applicationContext
+        )
+    }
+    private val releaseAlarmManager by lazy {
+        ReleaseAlarmManager(
+            applicationContext
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +44,8 @@ class RootActivity : AppCompatActivity() {
         setupTabLayout()
         addTabLayoutListener()
         removeToolbarElevation()
+        setRepeatingAlarm()
+        setReleaseAlarm()
     }
 
     override fun onRestart() {
@@ -44,6 +61,20 @@ class RootActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.action_search -> {
+                val searchView = item.actionView as SearchView
+                searchView.queryHint = resources.getString(R.string.search_hint)
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(p0: String?): Boolean {
+                        return true
+                    }
+
+                    override fun onQueryTextChange(query: String?): Boolean {
+                        processingSearchText(query)
+                        return false
+                    }
+                })
+            }
             R.id.action_favorite_page -> {
                 if (appSession.getIsShowingFavorite()) {
                     appSession.setIsShowingFavorite(false)
@@ -57,7 +88,7 @@ class RootActivity : AppCompatActivity() {
                 setupTabLayout()
             }
             R.id.action_change_settings -> {
-                val intent = Intent(this, ChangeLanguageActivity::class.java)
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -138,6 +169,42 @@ class RootActivity : AppCompatActivity() {
                 applicationConf,
                 applicationRes.displayMetrics
             )
+        }
+    }
+
+    private fun setRepeatingAlarm() {
+        if (appSession.getIsDailyReminderWanted()) {
+            if (!dailyAlarmManager.isAlarmSet(applicationContext)) {
+                dailyAlarmManager.setRepeatingAlarm(applicationContext)
+            }
+        }
+    }
+
+    private fun setReleaseAlarm() {
+        if (appSession.getIsReleaseReminderWanted()) {
+            if (!releaseAlarmManager.isAlarmSet(applicationContext)) {
+                releaseAlarmManager.setRepeatingAlarm(applicationContext)
+            }
+        }
+    }
+
+    private fun processingSearchText(query: String?) {
+        // supportFragmentManager.fragments[0] = NavHostFragment
+        val movieFragment = supportFragmentManager.fragments[1] as ListFragment
+        val tvShowFragment = supportFragmentManager.fragments[2] as ListFragment
+
+        if (query.isNullOrEmpty()) {
+            if (movieFragment.isResumed) {
+                movieFragment.setArrData()
+            } else {
+                tvShowFragment.setArrData()
+            }
+        } else {
+            if (movieFragment.isResumed) {
+                movieFragment.searchMovieFromAPI(query)
+            } else {
+                tvShowFragment.searchTvShowFromAPI(query)
+            }
         }
     }
 }

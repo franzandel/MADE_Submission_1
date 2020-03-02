@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivListPhoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/iv_item_list_description" />
+
+    <TextView
+        android:id="@+id/tvListName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_toEndOf="@+id/ivListPhoto"
+        android:layout_toRightOf="@+id/ivListPhoto"
+        tools:text="@string/movie_name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvListDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvListName"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/ivListPhoto"
+        android:layout_toEndOf="@+id/ivListPhoto"
+        android:ellipsize="end"
+        android:maxLines="4"
+        tools:text="@string/movie_description" />
+
+</RelativeLayout>

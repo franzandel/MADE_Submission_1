@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MADE Submission 4</string>
+    <string name="app_name">MADE Submission 5</string>
     <string name="movie_name">Nama Film</string>
     <string name="movie_description">Deskripsi Film</string>
     <string name="movie_release_date">Tanggal Keluar :</string>
@@ -16,12 +16,11 @@
     <string name="toolbar_favorite_movie_name">Film Favorit</string>
     <string name="toolbar_favorite_tv_show_name">Acara TV Favorit</string>
     <string name="toolbar_detail_name">Detil %1$s</string>
-    <string name="toolbar_change_language">Ubah Bahasa</string>
+    <string name="toolbar_settings">Setelan</string>
 
     <string name="show_favorite_settings">Tampilkan Favorit</string>
     <string name="show_all_settings">Tampilkan Semua</string>
 
-    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
     <string name="change_language_bahasa">Bahasa Indonesia</string>
     <string name="change_language_english">English</string>
 
@@ -30,4 +29,25 @@
 
     <string name="load_api_failed">Gagal mengambil Data dari API</string>
     <string name="iv_item_list_description">Gambar</string>
+
+    <string name="pn_daily_reminder_title">NiceFilm</string>
+    <string name="pn_daily_reminder_description">Jangan lupa, kami selalu menyediakan film-film terbaru untukmu</string>
+
+    <string name="pn_release_reminder_new_line_description">%1$s telah rilis hari ini!</string>
+    <string name="pn_release_reminder_summary_text">%1$s film telah dirilis hari ini!</string>
+    <string name="pn_release_reminder_content_title">%1$s film baru!</string>
+    <string name="pn_release_reminder_content_description">Film baru hari ini</string>
+
+    <string name="tv_daily_reminder">Pengingat Harian</string>
+    <string name="tv_release_reminder">Pengingat Rilis</string>
+    <string name="tv_language">Bahasa</string>
+
+    <string-array name="language_array">
+        <item>Bahasa Indonesia</item>
+        <item>English</item>
+    </string-array>
+
+    <string name="empty_widget">Tidak ada Film Favorit</string>
+
+    <string name="search_hint">Cari disini…</string>
 </resources>

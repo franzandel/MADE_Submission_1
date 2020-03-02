@@ -5,6 +5,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <permission
+        android:name="com.example.madesubmission1.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.example.madesubmission1.WRITE_DATABASE"
+        android:protectionLevel="normal" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,7 +20,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".presentation.activity.ChangeLanguageActivity" />
+        <provider
+            android:name=".external.provider.FavoriteProvider"
+            android:authorities="com.franz.amazing.nicefilm"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.example.madesubmission1.READ_DATABASE"
+            android:writePermission="com.example.madesubmission1.WRITE_DATABASE" />
+
+        <receiver android:name=".external.widget.ImageBannerWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/image_banner_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".external.widget.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <activity android:name=".presentation.activity.SettingsActivity" />
         <activity android:name=".presentation.activity.RootActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +51,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.activity.ListDetailActivity" />
+
+        <receiver
+            android:name=".external.receiver.DailyAlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".external.receiver.ReleaseAlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

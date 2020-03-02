@@ -78,6 +78,93 @@ class AppRepository(private val appDatabase: AppDatabase) {
         return mutldAPIStateHandler
     }
 
+    fun searchMovieFromAPI(query: String): MutableLiveData<APIStateHandler<MovieAPI>> {
+        val mutldAPIStateHandler = MutableLiveData<APIStateHandler<MovieAPI>>()
+
+        movieNetworkService.searchMovieFromAPI(AppConst.apiKey, query)
+            .enqueue(object : Callback<BaseAPIResponse<MovieAPI>> {
+                override fun onResponse(
+                    call: Call<BaseAPIResponse<MovieAPI>>,
+                    response: Response<BaseAPIResponse<MovieAPI>>
+                ) {
+                    if (response.isSuccessful) {
+                        mutldAPIStateHandler.value =
+                            APIStateHandler(
+                                baseAPIResponse = response.body()
+                            )
+                    }
+                }
+
+                override fun onFailure(call: Call<BaseAPIResponse<MovieAPI>>, t: Throwable) {
+                    mutldAPIStateHandler.value =
+                        APIStateHandler(
+                            error = t
+                        )
+                }
+            })
+
+        return mutldAPIStateHandler
+    }
+
+    fun searchTvShowFromAPI(query: String): MutableLiveData<APIStateHandler<TvShowAPI>> {
+        val mutldAPIStateHandler = MutableLiveData<APIStateHandler<TvShowAPI>>()
+
+        tvShowNetworkService.searchTvShowFromAPI(AppConst.apiKey, query)
+            .enqueue(object : Callback<BaseAPIResponse<TvShowAPI>> {
+                override fun onResponse(
+                    call: Call<BaseAPIResponse<TvShowAPI>>,
+                    response: Response<BaseAPIResponse<TvShowAPI>>
+                ) {
+                    if (response.isSuccessful) {
+                        mutldAPIStateHandler.value =
+                            APIStateHandler(
+                                baseAPIResponse = response.body()
+                            )
+                    }
+                }
+
+                override fun onFailure(call: Call<BaseAPIResponse<TvShowAPI>>, t: Throwable) {
+                    mutldAPIStateHandler.value =
+                        APIStateHandler(
+                            error = t
+                        )
+                }
+            })
+
+        return mutldAPIStateHandler
+    }
+
+    fun getReleasedTodayMoviesFromAPI(
+        dateToday: String,
+        dateToday2: String
+    ): MutableLiveData<APIStateHandler<MovieAPI>> {
+        val mutldAPIStateHandler = MutableLiveData<APIStateHandler<MovieAPI>>()
+
+        movieNetworkService.getReleasedTodayMoviesFromAPI(AppConst.apiKey, dateToday, dateToday2)
+            .enqueue(object : Callback<BaseAPIResponse<MovieAPI>> {
+                override fun onResponse(
+                    call: Call<BaseAPIResponse<MovieAPI>>,
+                    response: Response<BaseAPIResponse<MovieAPI>>
+                ) {
+                    if (response.isSuccessful) {
+                        mutldAPIStateHandler.value =
+                            APIStateHandler(
+                                baseAPIResponse = response.body()
+                            )
+                    }
+                }
+
+                override fun onFailure(call: Call<BaseAPIResponse<MovieAPI>>, t: Throwable) {
+                    mutldAPIStateHandler.value =
+                        APIStateHandler(
+                            error = t
+                        )
+                }
+            })
+
+        return mutldAPIStateHandler
+    }
+
     fun getMovieAPIByIdFromDB(id: Int): MovieAPI? {
         return appDatabase.movieAPIDao().getMovieAPIById(id)
     }

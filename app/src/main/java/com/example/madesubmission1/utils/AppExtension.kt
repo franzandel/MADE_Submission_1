@@ -22,3 +22,11 @@ fun View.hide() {
 fun Context.showToast(content: String, duration: Int = 0) {
     Toast.makeText(this, content, duration).show()
 }
+
+fun Any?.isNull(): Boolean {
+    return this == null
+}
+
+fun Any?.isNotNull(): Boolean {
+    return this != null
+}

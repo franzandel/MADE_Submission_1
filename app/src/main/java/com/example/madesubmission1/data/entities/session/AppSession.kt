@@ -15,6 +15,8 @@ class AppSession(context: Context) {
         const val KEY_LANGUAGE = "key_language"
         const val KEY_IS_SHOWING_FAVORITE = "key_is_showing_favorite"
         const val KEY_IS_USER_CLICKED_FAVORITE = "key_is_user_clicked_favorite"
+        const val KEY_IS_DAILY_REMINDER_WANTED = "key_is_daily_reminder_wanted"
+        const val KEY_IS_RELEASE_REMINDER_WANTED = "key_is_release_reminder_wanted"
         lateinit var sharedPreferences: SharedPreferences
     }
 
@@ -50,6 +52,26 @@ class AppSession(context: Context) {
     fun setHasUserClickedFavorite(isUserClicked: Boolean) {
         val sharedPreferencesEditor = sharedPreferences.edit()
         sharedPreferencesEditor.putBoolean(KEY_IS_USER_CLICKED_FAVORITE, isUserClicked)
+        sharedPreferencesEditor.apply()
+    }
+
+    fun getIsDailyReminderWanted(): Boolean {
+        return sharedPreferences.getBoolean(KEY_IS_DAILY_REMINDER_WANTED, true)
+    }
+
+    fun setIsDailyReminderWanted(isDailyReminderWanted: Boolean) {
+        val sharedPreferencesEditor = sharedPreferences.edit()
+        sharedPreferencesEditor.putBoolean(KEY_IS_DAILY_REMINDER_WANTED, isDailyReminderWanted)
+        sharedPreferencesEditor.apply()
+    }
+
+    fun getIsReleaseReminderWanted(): Boolean {
+        return sharedPreferences.getBoolean(KEY_IS_RELEASE_REMINDER_WANTED, true)
+    }
+
+    fun setIsReleaseReminderWanted(isDailyReminderWanted: Boolean) {
+        val sharedPreferencesEditor = sharedPreferences.edit()
+        sharedPreferencesEditor.putBoolean(KEY_IS_RELEASE_REMINDER_WANTED, isDailyReminderWanted)
         sharedPreferencesEditor.apply()
     }
 }

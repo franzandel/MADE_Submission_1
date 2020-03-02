@@ -41,6 +41,18 @@ class ListFragmentViewModel(application: Application) : AndroidViewModel(applica
         return medldTvShow
     }
 
+    fun searchMovieFromAPI(query: String) {
+        medldMovie.addSource(appRepository.searchMovieFromAPI(query)) {
+            medldMovie.value = it
+        }
+    }
+
+    fun searchTvShowFromAPI(query: String) {
+        medldTvShow.addSource(appRepository.searchTvShowFromAPI(query)) {
+            medldTvShow.value = it
+        }
+    }
+
     fun insertAllMovieAPIIntoDB(listMovieAPI: List<MovieAPI>) {
         GlobalScope.launch(Dispatchers.IO) {
             appRepository.insertAllMovieAPIIntoDB(listMovieAPI)

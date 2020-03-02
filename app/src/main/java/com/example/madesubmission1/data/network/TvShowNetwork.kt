@@ -18,6 +18,12 @@ class TvShowNetwork {
     interface TvShowNetworkService {
         @GET("discover/tv")
         fun getAllTvShowFromAPI(@Query("api_key") apiKey: String): Call<BaseAPIResponse<TvShowAPI>>
+
+        @GET("search/tv")
+        fun searchTvShowFromAPI(
+            @Query("api_key") apiKey: String,
+            @Query("query") query: String
+        ): Call<BaseAPIResponse<TvShowAPI>>
     }
 
     fun getTvShowNetworkService(): TvShowNetworkService {

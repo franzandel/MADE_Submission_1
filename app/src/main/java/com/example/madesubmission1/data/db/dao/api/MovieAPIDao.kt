@@ -1,5 +1,6 @@
 package com.example.madesubmission1.data.db.dao.api
 
+import android.database.Cursor
 import androidx.room.*
 import com.example.madesubmission1.data.entities.api.MovieAPI
 
@@ -13,6 +14,9 @@ interface MovieAPIDao {
 
     @Query("SELECT * FROM MovieAPI")
     fun getAllMovieAPI(): List<MovieAPI>
+
+    @Query("SELECT * FROM MovieAPI WHERE _is_favorite = 1")
+    fun getAllFavoriteMovieAPICursor(): Cursor
 
     @Query("SELECT * FROM MovieAPI WHERE __id=:id ")
     fun getMovieAPIById(id: Int): MovieAPI

@@ -88,7 +88,7 @@ class ListFragment : Fragment() {
         )
     }
 
-    private fun setArrData() {
+    fun setArrData() {
         if (arguments?.getInt(ARG_PAGE_INDEX) == 0) {
             if (RootActivity.appSession.getHasUserClickedFavorite()) {
                 if (RootActivity.appSession.getIsShowingFavorite()) {
@@ -137,9 +137,7 @@ class ListFragment : Fragment() {
 
         if (apiStateHandler.error == null) {
             apiStateHandler.baseAPIResponse?.let {
-                if (listAPIAdapter.itemCount == 0) {
-                    setAPIAdapter(it.results)
-                }
+                setAPIAdapter(it.results)
 
                 insertMovieAPIIntoDBIfNotExist(it.results)
             }
@@ -153,9 +151,7 @@ class ListFragment : Fragment() {
 
         if (apiStateHandler.error == null) {
             apiStateHandler.baseAPIResponse?.let {
-                if (listAPIAdapter.itemCount == 0) {
-                    setAPIAdapter(it.results)
-                }
+                setAPIAdapter(it.results)
 
                 insertTvShowAPIIntoDBIfNotExist(it.results)
             }
@@ -228,14 +224,18 @@ class ListFragment : Fragment() {
 
     private fun setAPIAdapter(listBaseAPI: List<BaseAPI>) {
         if (RootActivity.appSession.getIsShowingFavorite()) {
-            if (arrFavoriteBaseAPI.isEmpty())
-                arrFavoriteBaseAPI.addAll(listBaseAPI)
+            arrFavoriteBaseAPI.apply {
+                clear()
+                addAll(listBaseAPI)
+            }
 
             setAPIAdapter(arrFavoriteBaseAPI)
             setListAPIAdapterClickListener()
         } else {
-            if (arrBaseAPI.isEmpty())
-                arrBaseAPI.addAll(listBaseAPI)
+            arrBaseAPI.apply {
+                clear()
+                addAll(listBaseAPI)
+            }
 
             setAPIAdapter(arrBaseAPI)
             setListAPIAdapterClickListener()
@@ -265,5 +265,13 @@ class ListFragment : Fragment() {
         NavHostFragment.findNavController(this).apply {
             navigate(toListDetailActivity)
         }
+    }
+
+    fun searchMovieFromAPI(query: String) {
+        listFragmentViewModel.searchMovieFromAPI(query)
+    }
+
+    fun searchTvShowFromAPI(query: String) {
+        listFragmentViewModel.searchTvShowFromAPI(query)
     }
 }

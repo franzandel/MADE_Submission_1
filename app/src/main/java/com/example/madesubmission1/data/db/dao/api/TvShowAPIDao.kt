@@ -1,5 +1,6 @@
 package com.example.madesubmission1.data.db.dao.api
 
+import android.database.Cursor
 import androidx.room.*
 import com.example.madesubmission1.data.entities.api.TvShowAPI
 
@@ -13,6 +14,9 @@ interface TvShowAPIDao {
 
     @Query("SELECT * FROM TvShowAPI")
     fun getAllTvShowAPI(): List<TvShowAPI>
+
+    @Query("SELECT * FROM TvShowAPI WHERE _is_favorite = 1")
+    fun getAllFavoriteTvShowAPICursor(): Cursor
 
     @Query("SELECT * FROM TvShowAPI WHERE __id=:id ")
     fun getTvShowAPIById(id: Int): TvShowAPI

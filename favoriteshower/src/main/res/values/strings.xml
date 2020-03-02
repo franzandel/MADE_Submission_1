@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Favorite Shower</string>
+    <string name="toolbar_favorite_movie_name">Favorite Movies List</string>
+    <string name="toolbar_favorite_tv_show_name">Favorite TV Show List</string>
+    <string name="toolbar_detail_name">%1$s Detail</string>
+
+    <string name="tab_title_1">Movies</string>
+    <string name="tab_title_2">TV Show</string>
+
+    <string name="iv_item_list_description">Image</string>
+
+    <string name="movie_name">Movie Name</string>
+    <string name="movie_description">Movie Description</string>
+    <string name="movie_release_date">Release Date :</string>
+    <string name="movie_release_date_value">28 Oct 19</string>
+    <string name="movie_top_cast">Top Cast</string>
+    <string name="movie_image">Movie Image</string>
+</resources>
